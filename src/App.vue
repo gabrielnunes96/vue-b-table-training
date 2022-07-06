@@ -2,53 +2,49 @@
   <div id="app">
     <b-table :items="items" :fields="fields" striped responsive="sm">
       <template #cell(expandir_pai)="row">
-        <b-button size="sm" @click="row.toggleDetails" class="pai">
+        <b-form-checkbox
+          v-model="row.detailsShowing"
+          @change="row.toggleDetails"
+        >
           {{ row.detailsShowing ? "Ocultar" : "Expandir" }}
-        </b-button>
-
+        </b-form-checkbox>
       </template>
-      <template #row-details="row">
-        <b-card>
-          <b-table :items="itemsanimal" :fields="fields_teste">
-            <template #cell(expandir_filho)="row">
-              <b-button size="sm" @click="row.toggleDetails" class="filho">
-                {{ row.detailsShowing ? "Ocultar" : "Expandir" }}
-              </b-button>
-            </template>
+      <template #row-details="">
+        <b-table :items="itemsanimal" :fields="fields_teste">
+          <template #cell(expandir_filho)="row">
+            <b-form-checkbox
+              v-model="row.detailsShowing"
+              @change="row.toggleDetails"
+            >
+              {{ row.detailsShowing ? "Ocultar" : "Expandir" }}
+            </b-form-checkbox>
+          </template>
 
-            <template #row-details="">
-              <b-card>
-                <b-table :items="itemsanimal2" :fields="fields_teste2">
+          <template #row-details="">
+            <b-table :items="itemsanimal2" :fields="fields_teste2">
+              <template #cell(expandir_neto)="row">
+                <b-form-checkbox
+                  v-model="row.detailsShowing"
+                  @change="row.toggleDetails"
+                >
+                  {{ row.detailsShowing ? "Ocultar" : "Expandir" }}
+                </b-form-checkbox>
+              </template>
+              <template #row-details="">
+                <b-table :items="itemsanimal3" :fields="fields_teste3">
                   <template #cell(expandir_neto)="row">
-                    <b-button
-                      size="sm"
-                      @click="row.toggleDetails"
-                      class="filho"
+                    <b-form-checkbox
+                      v-model="row.detailsShowing"
+                      @change="row.toggleDetails"
                     >
                       {{ row.detailsShowing ? "Ocultar" : "Expandir" }}
-                    </b-button>
-                  </template>
-                  <template #row-details="">
-                    <b-card>
-                      <b-table :items="itemsanimal3" :fields="fields_teste3">
-                        <template #cell(expandir_neto)="row">
-                          <b-button
-                            size="sm"
-                            @click="row.toggleDetails"
-                            class="filho"
-                          >
-                            {{ row.detailsShowing ? "Ocultar" : "Expandir" }}
-                          </b-button>
-                        </template>
-                      </b-table>
-                    </b-card>
+                    </b-form-checkbox>
                   </template>
                 </b-table>
-              </b-card>
-            </template>
-          </b-table>
-          <b-button size="sm" @click="row.toggleDetails">Ocultar</b-button>
-        </b-card>
+              </template>
+            </b-table>
+          </template>
+        </b-table>
       </template>
     </b-table>
   </div>
@@ -59,7 +55,7 @@ export default {
   name: "App",
   data() {
     return {
-      fields: ["primeiro_nome", "sobrenome", "idade", "expandir_pai"],
+      fields: ["expandir_pai", "primeiro_nome", "sobrenome", "idade"],
       items: [
         {
           temGato: false,
@@ -68,14 +64,14 @@ export default {
           sobrenome: "Obama",
         },
       ],
-      fields_teste: ["nome_animal", "sexo", "expandir_filho"],
+      fields_teste: ["expandir_filho", "nome_animal", "sexo"],
       itemsanimal: [
         {
           nome_animal: "Gabiru",
           sexo: "Macho",
         },
       ],
-      fields_teste2: ["cor_pelo", "brinquedo", "expandir_neto"],
+      fields_teste2: ["expandir_neto", "cor_pelo", "brinquedo"],
       itemsanimal2: [
         {
           cor_pelo: "Preto",
