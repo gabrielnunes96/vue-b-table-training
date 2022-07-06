@@ -1,0 +1,36 @@
+{
+  "dataDaAgenda": {
+    "cooperativa": {
+      "1111": {
+        "agencia": {
+          "5565": {
+            "tipoDeTransacao": "Crédito"
+          },
+          "9988": {
+            "tipoDeTransacao": "Débito"
+          }
+        }
+      },
+      "2222": {
+        "agencia": {
+          "5151": {
+            "tipoDeTransacao": "Crédito"
+          },
+          "5445": {
+            "tipoDeTransacao": "Débito"
+          }
+        }
+      },
+      "3333": {
+        "agencia": {
+          "5151": {
+            "tipoDeTransacao": "Crédito"
+          },
+          "5445": {
+            "tipoDeTransacao": "Débito"
+          }
+        }
+      }
+    }
+  }
+}
