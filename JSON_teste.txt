@@ -1,36 +1,25 @@
-{
-  "dataDaAgenda": {
-    "cooperativa": {
-      "1111": {
-        "agencia": {
-          "5565": {
-            "tipoDeTransacao": "Crédito"
-          },
-          "9988": {
-            "tipoDeTransacao": "Débito"
-          }
-        }
-      },
-      "2222": {
-        "agencia": {
-          "5151": {
-            "tipoDeTransacao": "Crédito"
-          },
-          "5445": {
-            "tipoDeTransacao": "Débito"
-          }
-        }
-      },
-      "3333": {
-        "agencia": {
-          "5151": {
-            "tipoDeTransacao": "Crédito"
-          },
-          "5445": {
-            "tipoDeTransacao": "Débito"
-          }
-        }
-      }
+[
+    {
+        data: 10/07/2022,
+        listaCooperativas: {
+            {
+                codCoop: 0123,
+                listaAgencias: [
+                    { codAge: 456,
+                        listaTransacoes: [
+                            { tipoTrans: compra },
+                            { tipoTrans: chargeback }
+                        ]
+                    },
+                    { codAge: 456 },
+                    { codAge: 789 }
+                ]
+            },
+            { codCoop: 0124 },
+            { codCoop: 0125 }
+        ]
+    },
+    {
+        data: 11/07/2022
     }
-  }
-}
+]

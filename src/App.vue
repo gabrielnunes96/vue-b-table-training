@@ -1,12 +1,17 @@
 <template>
   <div id="app">
-    <b-table :items="items_cooperativa" :fields="fields_cooperativa" striped responsive="sm">
+    <b-table
+      :items="items"
+      :fields="fields_cooperativa"
+      striped
+      responsive="sm"
+    >
       <template #cell(expandir_cooperativa)="row">
         <b-button size="sm" @click="row.toggleDetails" class="cooperativa">
           {{ row.detailsShowing ? "Ocultar" : "Expandir" }}
         </b-button>
       </template>
-      
+
       <template #row-details="row">
         <b-card>
           <b-table :items="items_agencia" :fields="fields_agencia">
@@ -18,7 +23,10 @@
 
             <template #row-details="">
               <b-card>
-                <b-table :items="items_tipoDeTransacao" :fields="fields_tipoDeTransacao">
+                <b-table
+                  :items="items_tipoDeTransacao"
+                  :fields="fields_tipoDeTransacao"
+                >
                   <template #cell(expandir_tipoDeTransacao)="row">
                     <b-button
                       size="sm"
@@ -28,7 +36,6 @@
                       {{ row.detailsShowing ? "Ocultar" : "Expandir" }}
                     </b-button>
                   </template>
-                  
                 </b-table>
               </b-card>
             </template>
@@ -45,42 +52,52 @@ export default {
   name: "App",
   data() {
     return {
-      fields_cooperativa: [
-        "cooperativa",
-        "nomeDaCooperativa",
-        "expandir_cooperativa",
-      ],
-      items_cooperativa: [
+      items: [
         {
-          cooperativa: "0555",
-          nomeDaCooperativa: "Unicred",
+          data: "15/07/2022",
+          listaCooperativas: {
+            codCoop: {
+              "0125": {
+                listaAgencias: {
+                  codAge: {
+                    456: {
+                      listaTransacoes: {
+                        tipoTrans: {
+                          compra: {},
+                          chargeback: {},
+                        },
+                      },
+                    },
+                    556: {},
+                    789: {},
+                  },
+                },
+              },
+              "65565": {
+                listaAgencias: {
+                  codAge: {
+                    456: {
+                      listaTransacoes: {
+                        tipoTrans: {
+                          compra: {},
+                          chargeback: {},
+                        },
+                      },
+                    },
+                    556: {},
+                    789: {},
+                  },
+                },
+              },
+            },
+          },
         },
       ],
-      fields_agencia: [
-        "agencia",
-        "nomeDaAgencia",
-        "cidadeDaAgencia",
-        "expandir_agencia"
-      ],
-      items_agencia: [
-        {
-          agencia: "teste1",
-          nomeDaAgencia: "Banco do Brasil 222",
-          cidadeDaAgencia: "Goiânia - GO",
-        },
-      ],
+      fields_cooperativa: ["codCoop", "expandir_cooperativa"],
+      fields_agencia: ["codAge", "expandir_agencia"],
       fields_tipoDeTransacao: [
-        "visaCredito",
-        "visaDebito",
-        "dataDoClearing",
+        "tipoTrans",
         //"expandir_tipoDeTransacao"
-      ],
-      items_tipoDeTransacao: [
-        {
-          visaCredito: "true",
-          visaDebito: "false",
-          dataDoClearing: "05/07/2022",
-        },
       ],
     };
   },
