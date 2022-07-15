@@ -5,7 +5,6 @@
       :columns="columns"
       :is-fold="props.isFold"
       :expand-type="false"
-      
     >
     </tree-table>
   </div>
