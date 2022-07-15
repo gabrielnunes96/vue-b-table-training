@@ -1,17 +1,34 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <tree-table
+      :data="data"
+      :columns="columns"
+      :is-fold="props.isFold"
+      :expand-type="props.expandType"
+      
+    >
+    </tree-table>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import dados from '@/resources/dados';
 
 export default {
   name: "App",
-  components: {
-    HelloWorld,
+  components: {},
+  data() {
+    return {
+
+      data: dados.data,
+      columns: dados.columns,
+
+      props: {
+        isFold: false,
+        expandType: false,
+      },
+      
+    };
   },
 };
 </script>
