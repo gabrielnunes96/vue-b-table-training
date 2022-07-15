@@ -4,7 +4,7 @@
       :data="data"
       :columns="columns"
       :is-fold="props.isFold"
-      :expand-type="props.expandType"
+      :expand-type="false"
       
     >
     </tree-table>
@@ -26,6 +26,7 @@ export default {
       props: {
         isFold: false,
         expandType: false,
+        selectable: false,
       },
       
     };
